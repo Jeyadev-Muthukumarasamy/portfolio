@@ -38,7 +38,7 @@ const Work = () => {
           id: "v1",
           title: "Commercial Video",
           description: "30-second promotional video",
-          video: "https://in.pinterest.com/pin/12736811441374076/"
+          video: "https://youtu.be/6LD30ChPsSs?feature=shared"
         },
         {
           id: "v2",
@@ -57,7 +57,7 @@ const Work = () => {
           id: "sf1",
           title: "Short Film",
           description: "Award-winning short film",
-          video: "/path/to/short_film.mp4"
+          video: "https://youtu.be/6LD30ChPsSs?feature=shared"
         }
       ]
     }
