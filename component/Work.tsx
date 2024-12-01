@@ -25,7 +25,7 @@ const Work = () => {
           id: "ld1",
           title: "Brand Identity Design",
           description: "Modern logo and branding package",
-          image: "https://in.pinterest.com/pin/947092996638944151/"
+          image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Flogotyp.us%2Flogo%2Fadidas%2F&psig=AOvVaw0rgbi9bqVrRdomsHLnigxX&ust=1733141276273000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjplcPEhooDFQAAAAAdAAAAABAE"
         }
       ]
     },
@@ -44,7 +44,7 @@ const Work = () => {
           id: "v2",
           title: "Event Highlights",
           description: "Corporate event video montage",
-          video: "/path/to/video2.mp4"
+          video: "https://youtu.be/6LD30ChPsSs?feature=shared"
         }
       ]
     },
