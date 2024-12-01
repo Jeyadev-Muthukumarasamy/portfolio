@@ -2,7 +2,7 @@
 
 const Services = () => {
   return (
-    <div className='bg-custom-indigo min-h-screen flex justify-center items-center py-20 px-4'>
+    <div className='bg-black min-h-screen flex justify-center items-center py-20 px-4'>
       <div className='max-w-7xl mx-auto'>
         <h2 className='text-5xl font-black bg-gradient-to-r from-white via-green-300 to-green-500 bg-clip-text text-transparent text-center mb-16'>Our Services</h2>
         

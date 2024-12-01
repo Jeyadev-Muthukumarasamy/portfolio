@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <>
             {/* Navbar Section */}
-            <div className="w-full py-6 shadow-lg backdrop-blur-sm fixed top-0 z-50 bg-custom-indigo bg-opacity-90 transition-colors duration-300">
+            <div className="w-full py-6 shadow-lg backdrop-blur-sm fixed top-0 z-50 bg-black bg-opacity-90 transition-colors duration-300">
                 <div className="px-8 max-w-7xl mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Left side (lingesh) */}
@@ -50,7 +50,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Navigation */}
-                    <div className={`md:hidden fixed inset-0 bg-custom-indigo transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}>
+                    <div className={`md:hidden fixed inset-0 bg-black transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}>
                         <ul className="flex flex-col items-center justify-center h-full gap-10">
                             <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
                             <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
@@ -63,7 +63,7 @@ const Navbar = () => {
             </div>
 
             {/* About Section */}
-            <div className="h-screen flex justify-center items-center relative overflow-hidden transition-colors duration-300 bg-custom-indigo">
+            <div className="h-screen flex justify-center items-center relative overflow-hidden transition-colors duration-300 bg-black">
                 {/* Animated background elements */}
                 <div className="absolute inset-0">
                     {/* Particles animation */}

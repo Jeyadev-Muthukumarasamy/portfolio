@@ -2,7 +2,7 @@
 
 const Contact = () => {
   return (              
-    <div className='bg-custom-indigo min-h-screen flex justify-center items-center py-20 px-4'>
+    <div className='bg-black min-h-screen flex justify-center items-center py-20 px-4'>
       <div className='bg-gradient-to-br from-black/30 to-green-900/20 backdrop-blur-lg rounded-2xl p-8 max-w-4xl w-full mx-auto shadow-2xl border border-green-500/10'>
         <h2 className='text-5xl font-black bg-gradient-to-r from-white via-green-300 to-green-500 bg-clip-text text-transparent text-center mb-12 tracking-tight'>Get In Touch</h2>
         
