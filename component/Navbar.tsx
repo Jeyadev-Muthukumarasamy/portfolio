@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import "./Navbar.css";
 import Typewriter from 'typewriter-effect';
-import { FiSun, FiMoon } from 'react-icons/fi'; // You can remove this import if not using icons
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
