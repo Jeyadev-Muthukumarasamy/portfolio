@@ -1,0 +1,69 @@
+.li-nav {
+    transition: transform 0.5s ; /* Smooth transition for both transform and color */
+}
+
+.li-nav:hover {
+    transform: translateY(-4px);
+    color: green; /* Ensures hover text color change happens smoothly */
+}
+
+.blinking-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    background-color: white;
+    animation: blink 0.8s steps(2, start) infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      background-color: transparent;
+    }
+  }
+  
+  /* Particle animations */
+@keyframes float-particle {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(50px, -50px);
+    }
+    50% {
+        transform: translate(-50px, 50px);
+    }
+    75% {
+        transform: translate(50px, 50px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes pulse-particle {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+.particle {
+    position: absolute;
+    will-change: transform;
+}
+
+.particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Remove or comment out the wave animations since we want static waves */
+/* .animate-wave, .animate-wave-slow, .animate-wave-slower {
+    animation: none;
+} */
