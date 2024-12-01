@@ -25,7 +25,7 @@ const Work = () => {
           id: "ld1",
           title: "Brand Identity Design",
           description: "Modern logo and branding package",
-          image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Flogotyp.us%2Flogo%2Fadidas%2F&psig=AOvVaw0rgbi9bqVrRdomsHLnigxX&ust=1733141276273000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjplcPEhooDFQAAAAAdAAAAABAE"
+          image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Flogotyp.us%2Flogo%2Fadidas%2F&psig=AOvVaw0rgbi9bqVrRdomsHLnigxX&ust=1733141276273000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjplcPEhooDFQAAAAAdAAAAABA"
         }
       ]
     },
@@ -88,6 +88,11 @@ const Work = () => {
                       )}
                       {item.video && (
                         <div className="video-player">
+                          <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Adidas_Logo.svg" 
+                            alt="Adidas Logo"
+                            className="w-full h-56 object-cover rounded-lg shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
+                          />
                           <iframe 
                             src={`https://www.youtube.com/embed/${item.video.split('/').pop()}`} 
                             title={item.title}

@@ -1,12 +1,12 @@
-
+import React from 'react';
 
 const Contact = () => {
   return (              
     <div className='bg-custom-indigo min-h-screen flex justify-center items-center py-20 px-4'>
-      <div className='bg-gradient-to-br from-black/30 to-green-900/20 backdrop-blur-lg rounded-2xl p-12 max-w-4xl w-full mx-auto shadow-2xl border border-green-500/10'>
+      <div className='bg-gradient-to-br from-black/30 to-green-900/20 backdrop-blur-lg rounded-2xl p-8 max-w-4xl w-full mx-auto shadow-2xl border border-green-500/10'>
         <h2 className='text-5xl font-black bg-gradient-to-r from-white via-green-300 to-green-500 bg-clip-text text-transparent text-center mb-12 tracking-tight'>Get In Touch</h2>
         
-        <div className='grid md:grid-cols-2 gap-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           <div className='space-y-8'>
             <div className='group hover:bg-black/20 p-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1'>
               <div className='flex items-center gap-6'>
@@ -66,4 +66,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Contact;
