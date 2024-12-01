@@ -1,4 +1,4 @@
-import{ useState } from 'react';
+import { useState } from 'react';
 import "./Navbar.css";
 import Typewriter from 'typewriter-effect';
 
@@ -17,7 +17,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center">
                         {/* Left side (lingesh) */}
                         <div className='flex items-center'>
-                            <h4 className="text-3xl font-extrabold bg-gradient-to-r bg-clip-text text-transparent transition-all duration-500 font-montserrat from-custom-indigo to-green-400 hover:from-green-400 hover:to-custom-indigo">
+                            <h4 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-green-300 bg-clip-text text-transparent transition-all duration-500 font-montserrat hover:from-green-300 hover:to-indigo-400">
                                 Lingesh
                             </h4>
                         </div>
@@ -40,11 +40,11 @@ const Navbar = () => {
                         {/* Desktop Navigation */}
                         <div className="hidden md:block">
                             <ul className="flex gap-8 justify-center">
-                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Home</li>
-                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Service</li>
-                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">About us</li>
-                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">My works</li>
-                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Contact</li>
+                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Home</li>
+                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Service</li>
+                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">About us</li>
+                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">My works</li>
+                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Contact</li>
                             </ul>
                         </div>
                     </div>
@@ -52,11 +52,11 @@ const Navbar = () => {
                     {/* Mobile Navigation */}
                     <div className={`md:hidden fixed inset-0 bg-black transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}>
                         <ul className="flex flex-col items-center justify-center h-full gap-10">
-                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
-                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
-                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">About us</li>
-                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">My works</li>
-                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Contact</li>
+                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
+                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
+                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">About us</li>
+                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">My works</li>
+                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Contact</li>
                         </ul>
                     </div>
                 </div>
@@ -87,12 +87,10 @@ const Navbar = () => {
                             ))}
                         </div>
                     </div>
-
-                    
                 </div>
 
-                <div id="app" className="text-3xl font-bold text-center z-10 backdrop-blur-sm p-8 rounded-xl transition-colors duration-300 bg-custom-indigo text-white">
-                    <p className="text-md mb-4 text-white">Transforming Your Ideas into Creativity</p>
+                <div id="app" className="text-3xl font-bold text-center z-10 backdrop-blur-sm p-8 rounded-xl transition-colors duration-300 bg-black/70">
+                    <p className="text-md mb-4 text-gray-300">Transforming Your Ideas into Creativity</p>
                     <Typewriter
                         options={{
                             loop: true,
@@ -103,22 +101,22 @@ const Navbar = () => {
                                 .pauseFor(2500)
                                 .typeString('I am a')
                                 .typeString(' ')
-                                .typeString('<span class="text-green-500 font-bold">Logo Editor</span>')
+                                .typeString('<span class="text-green-400 font-bold">Logo Editor</span>')
                                 .pauseFor(1000)
                                 .deleteChars(11)
-                                .typeString('<span class="text-green-500 font-bold">Title Animator</span>')
+                                .typeString('<span class="text-green-400 font-bold">Title Animator</span>')
                                 .pauseFor(1000)
                                 .deleteChars(13)
-                                .typeString('<span class="text-green-500 font-bold">2D Animator</span>')
+                                .typeString('<span class="text-green-400 font-bold">2D Animator</span>')
                                 .pauseFor(1000)
                                 .deleteChars(10)
-                                .typeString('<span class="text-green-500 font-bold">Graphic Designer</span>')
+                                .typeString('<span class="text-green-400 font-bold">Graphic Designer</span>')
                                 .pauseFor(1000)
                                 .deleteChars(15)
-                                .typeString('<span class="text-green-500 font-bold">Film Editor</span>')
+                                .typeString('<span class="text-green-400 font-bold">Film Editor</span>')
                                 .pauseFor(1000)
                                 .deleteChars(11)
-                                .typeString('<span class="text-green-500 font-bold">Short Film Editor</span>')
+                                .typeString('<span class="text-green-400 font-bold">Short Film Editor</span>')
                                 .pauseFor(1000)
                                 .deleteChars(16)
                                 .pauseFor(500)
@@ -126,7 +124,7 @@ const Navbar = () => {
                         }}
                     />
                     <div className="flex justify-center gap-6 mt-8">
-                        <button className="text-sm bg-black/50 backdrop-blur-sm py-3 px-6 rounded-full hover:cursor-pointer hover:bg-black/80 transition-all duration-300 hover:scale-105 border border-green-500/30 text-white">
+                        <button className="text-sm bg-gray-800/50 backdrop-blur-sm py-3 px-6 rounded-full hover:cursor-pointer hover:bg-gray-800/80 transition-all duration-300 hover:scale-105 border border-green-500/30 text-gray-200">
                             Contact Me
                         </button>
                         <button className="text-sm bg-green-500/50 backdrop-blur-sm py-3 px-6 rounded-full hover:cursor-pointer hover:bg-green-600/50 transition-all duration-300 hover:scale-105 border border-green-500/30 text-white">

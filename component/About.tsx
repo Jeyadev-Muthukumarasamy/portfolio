@@ -28,34 +28,34 @@ const Navbar = () => {
         visible: { opacity: 1, y: 0 }
     };
 
-    // Create more visible animated elements
+    // Enhanced animated elements with more vibrant colors and larger sizes
     const animatedElements = [
         {
-            size: "w-64 h-64",
-            color: "from-green-500/30 to-blue-500/30",
-            duration: 20,
-        },
-        {
             size: "w-96 h-96",
-            color: "from-green-400/20 to-emerald-500/20",
-            duration: 25,
+            color: "from-green-400/40 via-emerald-500/40 to-teal-400/40",
+            duration: 18,
         },
         {
-            size: "w-72 h-72",
-            color: "from-emerald-400/25 to-green-500/25",
+            size: "w-[30rem] h-[30rem]",
+            color: "from-green-300/50 via-emerald-400/50 to-teal-300/50",
             duration: 22,
         },
         {
-            size: "w-80 h-80",
-            color: "from-green-500/20 to-emerald-400/20",
-            duration: 28,
+            size: "w-[35rem] h-[35rem]",
+            color: "from-teal-400/40 via-green-400/40 to-emerald-300/40",
+            duration: 25,
+        },
+        {
+            size: "w-[40rem] h-[40rem]",
+            color: "from-emerald-400/50 via-teal-400/50 to-green-400/50",
+            duration: 20,
         },
     ];
 
     return (
         <>
             {/* Navbar Section */}
-            <div className="bg-custom-indigo w-full py-6 shadow-lg backdrop-blur-sm bg-opacity-90 fixed top-0 z-50">
+            <div className="bg-black w-full py-6 shadow-lg backdrop-blur-sm bg-opacity-90 fixed top-0 z-50">
                 <div className="px-8 max-w-7xl mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Left side (lingesh) */}
@@ -91,7 +91,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Navigation */}
-                    <div className={`md:hidden fixed inset-0 backdrop-blur-lg bg-custom-indigo/80 transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+                    <div className={`md:hidden fixed inset-0 backdrop-blur-lg bg-black transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
                         <ul className="flex flex-col items-center justify-center h-full gap-10">
                             <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
                             <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
@@ -104,56 +104,77 @@ const Navbar = () => {
             </div>
 
             {/* About Section */}
-            <div className="bg-custom-indigo h-screen flex justify-center items-center relative overflow-hidden">
+            <div className="bg-black h-screen flex justify-center items-center relative overflow-hidden">
                 {/* Enhanced animated background elements */}
                 {animatedElements.map((element, index) => (
                     <motion.div
                         key={index}
-                        className={`absolute ${element.size} rounded-full bg-gradient-to-r ${element.color} blur-2xl`}
+                        className={`absolute ${element.size} rounded-full bg-gradient-to-r ${element.color}`}
                         initial={{ 
-                            x: Math.random() * 1000 - 500,
-                            y: Math.random() * 1000 - 500,
-                            opacity: 0.5
+                            x: -500,
+                            y: -500,
+                            opacity: 0.8
                         }}
                         animate={{
-                            x: [
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500
-                            ],
-                            y: [
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500,
-                                Math.random() * 1000 - 500
-                            ],
+                            x: [500, -300, 400, -500],
+                            y: [-300, 500, -400, -300],
                             rotate: [0, 180, 360],
-                            scale: [1, 1.2, 0.8, 1],
+                            scale: [1, 1.2, 0.9, 1.1],
                         }}
                         transition={{
                             duration: element.duration,
                             repeat: Infinity,
-                            ease: "linear",
+                            repeatType: "reverse",
+                            ease: "easeInOut",
                         }}
                         style={{
-                            filter: 'blur(60px)',
+                            filter: 'blur(40px)',
+                            background: `radial-gradient(circle, 
+                                rgba(34, 197, 94, 0.4), 
+                                rgba(16, 185, 129, 0.4), 
+                                rgba(20, 184, 166, 0.4)
+                            )`,
                             zIndex: 0
                         }}
                     />
                 ))}
 
-                {/* Add a subtle overlay to improve text readability */}
-                <div className="absolute inset-0 bg-custom-indigo/50 backdrop-blur-sm" />
+                {/* Subtle dark overlay for better text contrast */}
+                <div className="absolute inset-0 bg-black" />
 
-                {/* Main content */}
+                {/* Additional floating particles */}
+                <div className="absolute inset-0">
+                    {[...Array(20)].map((_, i) => (
+                        <motion.div
+                            key={`particle-${i}`}
+                            className="absolute w-2 h-2 bg-green-400/60 rounded-full"
+                            initial={{
+                                x: Math.random() * window.innerWidth,
+                                y: Math.random() * window.innerHeight,
+                            }}
+                            animate={{
+                                x: Math.random() * window.innerWidth,
+                                y: Math.random() * window.innerHeight,
+                                scale: [1, 1.5, 1],
+                                opacity: [0.4, 0.8, 0.4],
+                            }}
+                            transition={{
+                                duration: 10 + Math.random() * 10,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                            }}
+                        />
+                    ))}
+                </div>
+
+                {/* Main content with enhanced blur backdrop */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-white font-sans text-3xl font-bold text-center z-10 backdrop-blur-sm bg-black/10 p-8 rounded-xl"
+                    className="text-white font-sans text-3xl font-bold text-center z-10 backdrop-blur-md bg-black/20 p-8 rounded-xl border border-white/10"
                 >
-                    {/* Rest of your content (Typewriter, buttons, etc.) */}
+                    {/* Your existing content */}
                     <p className="text-md mb-4">Transforming Your Ideas into Creativity</p>
                     <Typewriter
                         options={{
@@ -164,16 +185,16 @@ const Navbar = () => {
                             typewriter
                                 .pauseFor(2500)
                                 .typeString('I am a ')
-                                .typeString('<span class="text-green-500 font-bold">graphic designer</span>')
+                                .typeString('<span class="text-green-400 font-bold">graphic designer</span>')
                                 .pauseFor(1000)
                                 .deleteChars(17)
-                                .typeString('<span class="text-green-500 font-bold">video editor</span>')
+                                .typeString('<span class="text-green-400 font-bold">video editor</span>')
                                 .pauseFor(1000)
                                 .deleteChars(13)
-                                .typeString('<span class="text-green-500 font-bold">animator</span>')
+                                .typeString('<span class="text-green-400 font-bold">animator</span>')
                                 .pauseFor(1000)
                                 .deleteChars(10)
-                                .typeString('<span class="text-green-500 font-bold">photo editor</span>')
+                                .typeString('<span class="text-green-400 font-bold">photo editor</span>')
                                 .pauseFor(1000)
                                 .deleteChars(13)
                                 .pauseFor(500)
@@ -182,16 +203,16 @@ const Navbar = () => {
                     />
                     <div className="flex justify-center gap-6 mt-8">
                         <motion.button 
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.8)' }}
                             whileTap={{ scale: 0.95 }}
-                            className="text-sm bg-black/50 backdrop-blur-sm py-3 px-6 rounded-full hover:bg-black/80 transition-all duration-300 border border-green-500/30"
+                            className="text-sm bg-black/50 backdrop-blur-sm py-3 px-6 rounded-full transition-all duration-300 border border-green-400/30"
                         >
                             Contact Me
                         </motion.button>
                         <motion.button 
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(34, 197, 94, 0.6)' }}
                             whileTap={{ scale: 0.95 }}
-                            className="text-sm bg-green-500/50 backdrop-blur-sm py-3 px-6 rounded-full hover:bg-green-600/50 transition-all duration-300 border border-green-500/30"
+                            className="text-sm bg-green-500/50 backdrop-blur-sm py-3 px-6 rounded-full transition-all duration-300 border border-green-400/30"
                         >
                             My Works
                         </motion.button>
