@@ -20,7 +20,6 @@ const Modal: React.FC<ModalProps> = ({ item, onClose, isVideo }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  console.log(isFullScreen)
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -100,7 +99,7 @@ const Work: React.FC = () => {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const response = await axios.get('https://portfoliobackend-lufy66j9r-jeyadevmuthukumarasamys-projects.vercel.app/api/');
+        const response = await axios.get('https://portfoliobackends-e4a48wixz-jeyadevmuthukumarasamys-projects.vercel.app/api');
         setWorks(response.data.data);
         if (response.data.data.length > 0) {
           setActiveCategory(response.data.data[0].title);
