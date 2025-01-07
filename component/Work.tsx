@@ -100,7 +100,7 @@ const Work: React.FC = () => {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const response = await axios.get('https://portfoliobackend-6cn68n5cb-jeyadevmuthukumarasamys-projects.vercel.app/api');
+        const response = await axios.get('https://portfoliobackend-9s4kf8voh-jeyadevmuthukumarasamys-projects.vercel.app/api');
         setWorks(response.data.data);
         if (response.data.data.length > 0) {
           setActiveCategory(response.data.data[0].title);
