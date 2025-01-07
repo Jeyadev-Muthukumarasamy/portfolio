@@ -26,13 +26,12 @@ app.get("/", (req: Request, res: Response) => {
 
 // MongoDB connection
 mongoose
-  .connect('mongodb+srv://jeydev007:fm5F14OFOFESXuO9@cluster0.3amti.mongodb.net/')
+  .connect('mongodb+srv://jeydev007:upBXGlEQ66KmcDCY@cluster0.0rjah.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => {
     console.error('Connection error:', err);
     process.exit(1); // Exit the process if the connection fails
   });
-
 // Use the router for API routes
 app.use("/api", router);
 
