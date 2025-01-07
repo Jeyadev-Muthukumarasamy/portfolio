@@ -1,25 +1,93 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Navbar.css";
 import Typewriter from 'typewriter-effect';
+import { motion, useAnimation } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const controls = useAnimation();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const position = window.pageYOffset;
+            setScrollPosition(position);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition > 50) {
+            controls.start({ backgroundColor: 'rgba(0, 0, 0, 0.8)', height: '4rem' });
+        } else {
+            controls.start({ backgroundColor: 'rgba(0, 0, 0, 0)', height: '5rem' });
+        }
+    }, [scrollPosition, controls]);
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+                duration: 0.6,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    };
+
+    // Enhanced animated elements with more vibrant colors and larger sizes
+    const animatedElements = [
+        {
+            size: "w-96 h-96",
+            color: "from-green-400/40 via-emerald-500/40 to-teal-400/40",
+            duration: 18,
+        },
+        {
+            size: "w-[30rem] h-[30rem]",
+            color: "from-green-300/50 via-emerald-400/50 to-teal-300/50",
+            duration: 22,
+        },
+        {
+            size: "w-[35rem] h-[35rem]",
+            color: "from-teal-400/40 via-green-400/40 to-emerald-300/40",
+            duration: 25,
+        },
+        {
+            size: "w-[40rem] h-[40rem]",
+            color: "from-emerald-400/50 via-teal-400/50 to-green-400/50",
+            duration: 20,
+        },
+    ];
+
     return (
         <>
             {/* Navbar Section */}
-            <div className="w-full py-6 shadow-lg backdrop-blur-sm fixed top-0 z-50 bg-black bg-opacity-90 transition-colors duration-300">
+            <motion.div 
+                className="w-full py-6 shadow-lg backdrop-blur-sm fixed top-0 z-50 transition-all duration-300"
+                initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', height: '5rem' }}
+                animate={controls}
+            >
                 <div className="px-8 max-w-7xl mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Left side (lingesh) */}
                         <div className='flex items-center'>
-                            <h4 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-green-300 bg-clip-text text-transparent transition-all duration-500 font-montserrat hover:from-green-300 hover:to-indigo-400">
-                                Lingesh
-                            </h4>
+                            <h4 className="text-white text-3xl font-extrabold bg-gradient-to-r from-white to-green-400 bg-clip-text text-transparent hover:from-green-400 hover:to-white transition-all duration-500 font-poppins">Lingesh</h4>
                         </div>
 
                         {/* Hamburger Menu Button */}
@@ -40,98 +108,123 @@ const Navbar = () => {
                         {/* Desktop Navigation */}
                         <div className="hidden md:block">
                             <ul className="flex gap-8 justify-center">
-                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Home</li>
-                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Service</li>
-                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">About us</li>
-                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">My works</li>
-                                <li className="text-gray-200 cursor-pointer li-nav hover:text-green-400 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-400 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Contact</li>
+                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Home</li>
+                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Service</li>
+                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">About us</li>
+                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">My works</li>
+                                <li className="text-white cursor-pointer li-nav hover:text-green-500 transition-all duration-300 text-lg font-semibold tracking-wide relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-500 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Contact</li>
                             </ul>
                         </div>
                     </div>
 
                     {/* Mobile Navigation */}
-                    <div className={`md:hidden fixed inset-0 bg-black transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}>
+                    <div className={`md:hidden fixed inset-0 backdrop-blur-lg bg-black transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
                         <ul className="flex flex-col items-center justify-center h-full gap-10">
-                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
-                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
-                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">About us</li>
-                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">My works</li>
-                            <li className="text-gray-200 cursor-pointer hover:text-green-400 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Contact</li>
+                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Home</li>
+                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Service</li>
+                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">About us</li>
+                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">My works</li>
+                            <li className="text-white cursor-pointer hover:text-green-500 transition-all duration-300 text-3xl font-bold tracking-wider hover:scale-110 transform">Contact</li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* About Section */}
-            <div className="h-screen flex justify-center items-center relative overflow-hidden transition-colors duration-300 bg-black">
-                {/* Animated background elements */}
-                <div className="absolute inset-0">
-                    {/* Particles animation */}
-                    <div className="absolute inset-0 opacity-15">
-                        <div className="particles-container">
-                            {[...Array(20)].map((_, i) => (
-                                <div 
-                                    key={i}
-                                    className={`particle absolute rounded-full bg-green-600/20
-                                        ${i % 4 === 0 ? 'w-2 h-2' : i % 4 === 1 ? 'w-3 h-3' : i % 4 === 2 ? 'w-4 h-4' : 'w-5 h-5'}
-                                    `}
-                                    style={{
-                                        top: `${Math.random() * 100}%`,
-                                        left: `${Math.random() * 100}%`,
-                                        animation: `
-                                            float-particle ${5 + Math.random() * 10}s linear infinite,
-                                            pulse-particle ${3 + Math.random() * 2}s ease-in-out infinite
-                                        `
-                                    }}
-                                ></div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                <div id="app" className="text-3xl font-bold text-center z-10 backdrop-blur-sm p-8 rounded-xl transition-colors duration-300 bg-black/70">
-                    <p className="text-md mb-4 text-gray-300">Transforming Your Ideas into Creativity</p>
-                    <Typewriter
-                        options={{
-                            loop: true,
-                            delay: 75,
+            <div className="bg-black min-h-screen flex justify-center items-center relative overflow-hidden">
+                {/* Enhanced animated background elements */}
+                {animatedElements.map((element, index) => (
+                    <motion.div
+                        key={index}
+                        className={`absolute ${element.size} rounded-full bg-gradient-to-r ${element.color}`}
+                        initial={{ 
+                            x: -500,
+                            y: -500,
+                            opacity: 0.8
                         }}
-                        onInit={(typewriter) => {
-                            typewriter
-                                .pauseFor(2500)
-                                .typeString('I am a')
-                                .typeString(' ')
-                                .typeString('<span class="text-green-400 font-bold">Logo Editor</span>')
-                                .pauseFor(1000)
-                                .deleteChars(11)
-                                .typeString('<span class="text-green-400 font-bold">Title Animator</span>')
-                                .pauseFor(1000)
-                                .deleteChars(13)
-                                .typeString('<span class="text-green-400 font-bold">2D Animator</span>')
-                                .pauseFor(1000)
-                                .deleteChars(10)
-                                .typeString('<span class="text-green-400 font-bold">Graphic Designer</span>')
-                                .pauseFor(1000)
-                                .deleteChars(15)
-                                .typeString('<span class="text-green-400 font-bold">Film Editor</span>')
-                                .pauseFor(1000)
-                                .deleteChars(11)
-                                .typeString('<span class="text-green-400 font-bold">Short Film Editor</span>')
-                                .pauseFor(1000)
-                                .deleteChars(16)
-                                .pauseFor(500)
-                                .start();
+                        animate={{
+                            x: [500, -300, 400, -500],
+                            y: [-300, 500, -400, -300],
+                            rotate: [0, 180, 360],
+                            scale: [1, 1.2, 0.9, 1.1],
+                        }}
+                        transition={{
+                            duration: element.duration,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut",
+                        }}
+                        style={{
+                            filter: 'blur(40px)',
+                            background: `radial-gradient(circle, 
+                                rgba(34, 197, 94, 0.4), 
+                                rgba(16, 185, 129, 0.4), 
+                                rgba(20, 184, 166, 0.4)
+                            )`,
+                            zIndex: 0
                         }}
                     />
-                    <div className="flex justify-center gap-6 mt-8">
-                        <button className="text-sm bg-gray-800/50 backdrop-blur-sm py-3 px-6 rounded-full hover:cursor-pointer hover:bg-gray-800/80 transition-all duration-300 hover:scale-105 border border-green-500/30 text-gray-200">
+                ))}
+
+                {/* Subtle dark overlay for better text contrast */}
+                <div className="absolute inset-0 bg-black/50" />
+
+                {/* Main content with enhanced blur backdrop */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="text-white font-sans text-3xl font-bold text-center z-10 backdrop-blur-md bg-black/20 p-8 rounded-xl border border-white/10"
+                >
+                    <motion.p variants={itemVariants} className="text-md mb-4">Transforming Your Ideas into Creativity</motion.p>
+                    <motion.div variants={itemVariants}>
+                        <Typewriter
+                            options={{
+                                loop: true,
+                                delay: 75,
+                            }}
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .pauseFor(2500)
+                                    .typeString('I am Lingesh, a ')
+                                    .typeString('<span class="text-green-400 font-bold">graphic designer</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(17)
+                                    .typeString('<span class="text-green-400 font-bold">video editor</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(13)
+                                    .typeString('<span class="text-green-400 font-bold">animator</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(10)
+                                    .typeString('<span class="text-green-400 font-bold">photo editor</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(13)
+                                    .typeString('<span class="text-green-400 font-bold">web developer</span>')
+                                    .pauseFor(1000)
+                                    .start();
+                            }}
+                        />
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="text-lg mt-4">
+                        I'm passionate about bringing ideas to life through visuals. I have experience in creating stunning graphics, editing videos, animating designs, and building web interfaces.
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="flex justify-center gap-6 mt-8">
+                        <motion.button 
+                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.8)' }}
+                            whileTap={{ scale: 0.95 }}
+                            className="text-sm bg-black/50 backdrop-blur-sm py-3 px-6 rounded-full transition-all duration-300 border border-green-400/30"
+                        >
                             Contact Me
-                        </button>
-                        <button className="text-sm bg-green-500/50 backdrop-blur-sm py-3 px-6 rounded-full hover:cursor-pointer hover:bg-green-600/50 transition-all duration-300 hover:scale-105 border border-green-500/30 text-white">
+                        </motion.button>
+                        <motion.button 
+                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(34, 197, 94, 0.6)' }}
+                            whileTap={{ scale: 0.95 }}
+                            className="text-sm bg-green-500/50 backdrop-blur-sm py-3 px-6 rounded-full transition-all duration-300 border border-green-400/30"
+                        >
                             My Works
-                        </button>
-                    </div>
-                </div>
+                        </motion.button>
+                    </motion.div>
+                </motion.div>
             </div>
         </>
     );

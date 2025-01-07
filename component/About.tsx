@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Navbar.css";
 import Typewriter from 'typewriter-effect';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const controls = useAnimation();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const position = window.pageYOffset;
+            setScrollPosition(position);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition > 50) {
+            controls.start({ backgroundColor: 'rgba(0, 0, 0, 0.8)', height: '4rem' });
+        } else {
+            controls.start({ backgroundColor: 'rgba(0, 0, 0, 0)', height: '5rem' });
+        }
+    }, [scrollPosition, controls]);
 
     // Animation variants
     const containerVariants = {
@@ -55,7 +78,11 @@ const Navbar = () => {
     return (
         <>
             {/* Navbar Section */}
-            <div className="bg-black w-full py-6 shadow-lg backdrop-blur-sm bg-opacity-90 fixed top-0 z-50">
+            <motion.div 
+                className="w-full py-6 shadow-lg backdrop-blur-sm fixed top-0 z-50 transition-all duration-300"
+                initial={{ backgroundColor: 'rgba(0, 0, 0, 0)', height: '5rem' }}
+                animate={controls}
+            >
                 <div className="px-8 max-w-7xl mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Left side (lingesh) */}
@@ -101,10 +128,10 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* About Section */}
-            <div className="bg-black h-screen flex justify-center items-center relative overflow-hidden">
+            <div className="bg-black min-h-screen flex justify-center items-center relative overflow-hidden">
                 {/* Enhanced animated background elements */}
                 {animatedElements.map((element, index) => (
                     <motion.div
@@ -140,68 +167,48 @@ const Navbar = () => {
                 ))}
 
                 {/* Subtle dark overlay for better text contrast */}
-                <div className="absolute inset-0 bg-black" />
-
-                {/* Additional floating particles */}
-                <div className="absolute inset-0">
-                    {[...Array(20)].map((_, i) => (
-                        <motion.div
-                            key={`particle-${i}`}
-                            className="absolute w-2 h-2 bg-green-400/60 rounded-full"
-                            initial={{
-                                x: Math.random() * window.innerWidth,
-                                y: Math.random() * window.innerHeight,
-                            }}
-                            animate={{
-                                x: Math.random() * window.innerWidth,
-                                y: Math.random() * window.innerHeight,
-                                scale: [1, 1.5, 1],
-                                opacity: [0.4, 0.8, 0.4],
-                            }}
-                            transition={{
-                                duration: 10 + Math.random() * 10,
-                                repeat: Infinity,
-                                repeatType: "reverse",
-                            }}
-                        />
-                    ))}
-                </div>
+                <div className="absolute inset-0 bg-black/50" />
 
                 {/* Main content with enhanced blur backdrop */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
                     className="text-white font-sans text-3xl font-bold text-center z-10 backdrop-blur-md bg-black/20 p-8 rounded-xl border border-white/10"
                 >
-                    {/* Your existing content */}
-                    <p className="text-md mb-4">Transforming Your Ideas into Creativity</p>
-                    <Typewriter
-                        options={{
-                            loop: true,
-                            delay: 75,
-                        }}
-                        onInit={(typewriter) => {
-                            typewriter
-                                .pauseFor(2500)
-                                .typeString('I am a ')
-                                .typeString('<span class="text-green-400 font-bold">graphic designer</span>')
-                                .pauseFor(1000)
-                                .deleteChars(17)
-                                .typeString('<span class="text-green-400 font-bold">video editor</span>')
-                                .pauseFor(1000)
-                                .deleteChars(13)
-                                .typeString('<span class="text-green-400 font-bold">animator</span>')
-                                .pauseFor(1000)
-                                .deleteChars(10)
-                                .typeString('<span class="text-green-400 font-bold">photo editor</span>')
-                                .pauseFor(1000)
-                                .deleteChars(13)
-                                .pauseFor(500)
-                                .start();
-                        }}
-                    />
-                    <div className="flex justify-center gap-6 mt-8">
+                    <motion.p variants={itemVariants} className="text-md mb-4">Transforming Your Ideas into Creativity</motion.p>
+                    <motion.div variants={itemVariants}>
+                        <Typewriter
+                            options={{
+                                loop: true,
+                                delay: 75,
+                            }}
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .pauseFor(2500)
+                                    .typeString('I am Lingesh, a ')
+                                    .typeString('<span class="text-green-400 font-bold">graphic designer</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(17)
+                                    .typeString('<span class="text-green-400 font-bold">video editor</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(13)
+                                    .typeString('<span class="text-green-400 font-bold">animator</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(10)
+                                    .typeString('<span class="text-green-400 font-bold">photo editor</span>')
+                                    .pauseFor(1000)
+                                    .deleteChars(13)
+                                    .typeString('<span class="text-green-400 font-bold">web developer</span>')
+                                    .pauseFor(1000)
+                                    .start();
+                            }}
+                        />
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="text-lg mt-4">
+                        I'm passionate about bringing ideas to life through visuals. I have experience in creating stunning graphics, editing videos, animating designs, and building web interfaces.
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="flex justify-center gap-6 mt-8">
                         <motion.button 
                             whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.8)' }}
                             whileTap={{ scale: 0.95 }}
@@ -216,7 +223,7 @@ const Navbar = () => {
                         >
                             My Works
                         </motion.button>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </>
