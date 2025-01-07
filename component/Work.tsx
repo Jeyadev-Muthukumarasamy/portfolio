@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose, isVideo }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
+console.log(isFullScreen)
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       contentRef.current?.requestFullscreen();
@@ -95,6 +95,7 @@ const Work: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<WorkItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
 
   useEffect(() => {
     const fetchWorks = async () => {
