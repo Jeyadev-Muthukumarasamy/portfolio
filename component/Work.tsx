@@ -20,6 +20,7 @@
     const [isFullScreen, setIsFullScreen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+    console.log(isFullScreen)
 
     const toggleFullScreen = () => {
       if (!document.fullscreenElement) {
