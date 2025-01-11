@@ -199,8 +199,6 @@ const Navbar = () => {
                                     .typeString('<span class="text-green-400 font-bold">photo editor</span>')
                                     .pauseFor(1000)
                                     .deleteChars(13)
-                                    .typeString('<span class="text-green-400 font-bold">web developer</span>')
-                                    .pauseFor(1000)
                                     .start();
                             }}
                         />
